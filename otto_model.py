@@ -84,22 +84,22 @@ def resolver_ciclo_otto_unificado(
     ds34 = s4 - s3
 
     # --- PROCESO 4 -> 1 (Rechazo de calor isocórica) ---
-    q41 = cv * (T4 - T1)      # negativo al rechazar calor (T4 > T1)
+    q41 = cv * (T1 - T4)      # negativo al rechazar calor (T4 > T1)
     q_out_mag = abs(q41)      # magnitud positiva del calor rechazado
     w41 = 0.0
     ds41 = s1 - s4
 
     # --- MÉTRICAS DEL CICLO ---
     w_neto = w12 + w23 + w34 + w41
-    q_neto = q12 + q23 + q34 - q41
+    q_neto = q12 + q23 + q34 + q41
     ds_neto = ds12 + ds23 + ds34 + ds41
 
     W_neto_total = cantidad * w_neto
     Q_neto_total = cantidad * q_neto
 
-    eta_th = (w_neto / q23) * 100.0 if q23 != 0 else 0.0
+    eta_th = (abs(w_neto) / q23) * 100.0 if q23 != 0 else 0.0
     eta_otto_ideal = (1.0 - 1.0 / (r ** (k - 1.0))) * 100.0
-    pme = ((w_neto / (v1 - v2)) * factor_pme) if (v1 - v2) != 0 else 0.0
+    pme = (abs(w_neto) / (v1 - v2)) * factor_pme) if (v1 - v2) != 0 else 0.0
 
 # Eficiencias de referencia por etapa (para tabla de procesos)
     n12 = (abs(w12) / (cv * (T2 - T1))) * 100.0 if (T2 - T1) != 0 else 0.0
