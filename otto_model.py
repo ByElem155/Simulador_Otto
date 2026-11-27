@@ -99,7 +99,7 @@ def resolver_ciclo_otto_unificado(
 
     eta_th = (abs(w_neto) / q23) * 100.0 if q23 != 0 else 0.0
     eta_otto_ideal = (1.0 - 1.0 / (r ** (k - 1.0))) * 100.0
-    pme = (abs(w_neto) / (v1 - v2)) * factor_pme) if (v1 - v2) != 0 else 0.0
+    pme = ((abs(w_neto) / (v1 - v2)) * factor_pme) if (v1 - v2) != 0 else 0.0
 
 # Eficiencias de referencia por etapa (para tabla de procesos)
     n12 = (abs(w12) / (cv * (T2 - T1))) * 100.0 if (T2 - T1) != 0 else 0.0
