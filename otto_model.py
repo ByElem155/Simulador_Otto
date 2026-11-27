@@ -60,7 +60,7 @@ def resolver_ciclo_otto_unificado(
     P2 = P1 * (r ** k)
     s2 = s1
     q12 = 0.0
-    w12 = cv * (T1 - T2)
+    w12 = cv * (T2 - T1)
     ds12 = s2 - s1
 
     # --- PROCESO 2 -> 3 (Adición de calor isocórica) ---
@@ -80,7 +80,7 @@ def resolver_ciclo_otto_unificado(
     P4 = P3 * ((1.0 / r) ** k)
     s4 = s3
     q34 = 0.0
-    w34 = cv * (T3 - T4)
+    w34 = cv * (T4 - T3)
     ds34 = s4 - s3
 
     # --- PROCESO 4 -> 1 (Rechazo de calor isocórica) ---
@@ -91,7 +91,7 @@ def resolver_ciclo_otto_unificado(
 
     # --- MÉTRICAS DEL CICLO ---
     w_neto = w12 + w23 + w34 + w41
-    q_neto = q12 + q23 + q34 + q41
+    q_neto = q12 + q23 + q34 - q41
     ds_neto = ds12 + ds23 + ds34 + ds41
 
     W_neto_total = cantidad * w_neto
